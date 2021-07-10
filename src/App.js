@@ -4,6 +4,9 @@ import AddMovie from "./components/AddMovie";
 import MovieList from "./components/MovieList";
 import Search from "./components/Search";
 import { moviesData } from "./data";
+import {BrowserRouter,Switch,Route} from 'react-router-dom'
+import Moviedescreption from "./components/Moviedescreption";
+
 
 function App() {
   const [movies, setMovies] = useState(moviesData);
@@ -19,22 +22,30 @@ function App() {
 
   return (
     <div>
+      <BrowserRouter>
       <Search
         searchRating={searchRating}
         searchValue={searchValue}
         handleRating={handleRating}
         handleSearch={handleSearch}
-      />
+        />
+        <Switch>
+<Route exact path="/" render={()=>
       <MovieList
-        movies={movies.filter(
-          (movie) =>
-            movie.name
-              .toLowerCase()
-              .includes(searchValue.toLocaleLowerCase().trim()) &&
-            movie.rating >= searchRating
+      movies={movies.filter(
+        (movie) =>
+        movie.name
+        .toLowerCase()
+        .includes(searchValue.toLocaleLowerCase().trim()) &&
+        movie.rating >= searchRating
         )}
+        />
+      } 
       />
+      <Route path="/film/:name" render={(props)=> <Moviedescreption  movies={movies} {...props} />   } />
       <AddMovie handleAdd={handleAdd} />
+          </Switch>
+          </BrowserRouter>
     </div>
   );
 }

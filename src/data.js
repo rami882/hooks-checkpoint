@@ -5,6 +5,7 @@ export const moviesData = [
     rating: 5,
     name: "Star Wars: The Rise Of Skywalker",
     date: "December 2019",
+    trailer:"https://www.youtube.com/embed/adzYW5DZoWs"
   },
   {
     id: Math.random(),
@@ -12,6 +13,7 @@ export const moviesData = [
     rating: 4,
     name: "Avengers: Infinity War",
     date: "April 2018",
+    trailer:"https://www.youtube.com/embed/QwievZ1Tx-8"
   },
   {
     id: Math.random(),
